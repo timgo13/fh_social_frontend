@@ -5,26 +5,39 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
 import { CreatePostPageComponent } from './pages/create-post-page/create-post-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { WhenAuthenticatedGuard } from './services/guards/when-authenticated.guard';
+import { WhenNotAuthenticatedGuard } from './services/guards/when-not-authenticated.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [WhenAuthenticatedGuard],
     component: FeedPageComponent
   },
   {
+    path: 'login',
+    canActivate: [WhenNotAuthenticatedGuard],
+    component: LoginPageComponent
+  },
+  {
     path: 'profile/:id',
+    canActivate: [WhenAuthenticatedGuard],
     component: UserPageComponent
   },
   {
     path: 'group/:id',
+    canActivate: [WhenAuthenticatedGuard],
     component: GroupPageComponent
   },
   {
     path: 'post',
+    canActivate: [WhenAuthenticatedGuard],
     component: CreatePostPageComponent
   },
   {
     path: 'search',
+    canActivate: [WhenAuthenticatedGuard],
     component: SearchPageComponent
   },
 
@@ -40,4 +53,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
