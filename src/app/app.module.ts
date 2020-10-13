@@ -12,6 +12,15 @@ import { GroupPageComponent } from './pages/group-page/group-page.component';
 import { HeaderComponent } from './shared-components/header/header.component';
 import { PostComponent } from './shared-components/post/post.component';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +36,14 @@ import { PostComponent } from './shared-components/post/post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
