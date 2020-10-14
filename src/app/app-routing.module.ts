@@ -8,6 +8,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { WhenAuthenticatedGuard } from './services/guards/when-authenticated.guard';
 import { WhenNotAuthenticatedGuard } from './services/guards/when-not-authenticated.guard';
+import { PostPageComponent } from './pages/post-page/post-page.component';
 
 const routes: Routes = [
   {
@@ -31,14 +32,14 @@ const routes: Routes = [
     component: GroupPageComponent
   },
   {
+    path: 'post/:id',
+    canActivate: [WhenAuthenticatedGuard],
+    component: PostPageComponent
+  },
+  {
     path: 'post',
     canActivate: [WhenAuthenticatedGuard],
     component: CreatePostPageComponent
-  },
-  {
-    path: 'post/:id',
-    canActivate: [WhenAuthenticatedGuard],
-    component: CreatePostPageComponent // TODO create Post page
   },
   {
     path: 'search',

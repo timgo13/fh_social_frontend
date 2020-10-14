@@ -15,6 +15,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PostModule } from './shared-components/post/post.module';
 import { HeaderModule } from './shared-components/header/header.module';
+import { PostPageComponent } from './pages/post-page/post-page.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SearchPageComponent,
     UserPageComponent,
     GroupPageComponent,
+    PostPageComponent,
   ],
   imports: [
     BrowserModule,

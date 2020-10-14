@@ -7,5 +7,9 @@
   },
   "feed": {
     "title": "Feed"
+  },
+  "post": {
+    "404": "Post nicht gefunen ¯\\_(ツ)_/¯",
+    "back_home": "Zurück zum Feed"
   }
 }
