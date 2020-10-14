@@ -9,12 +9,12 @@ import { CreatePostPageComponent } from './pages/create-post-page/create-post-pa
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
-import { HeaderComponent } from './shared-components/header/header.component';
-import { PostComponent } from './shared-components/post/post.component';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PostModule } from './shared-components/post/post.module';
+import { HeaderModule } from './shared-components/header/header.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -30,8 +30,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SearchPageComponent,
     UserPageComponent,
     GroupPageComponent,
-    HeaderComponent,
-    PostComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +42,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient]
       }
     }),
+    PostModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,5 +4,8 @@
     "username": "Benutzername",
     "password": "Passwort",
     "login": "Anmelden"
+  },
+  "feed": {
+    "title": "Feed"
   }
 }
