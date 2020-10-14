@@ -1,1 +1,17 @@
-<p>post works!</p>
+<a class="box post" [routerLink]="['post', post.id]">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{post.creatorName}}</strong>
+          <br>
+          <small>{{post.createdDate | date}}</small>
+        </p>
+        <div class="post_content_wrapper">
+          {{post.content ? post.content : 'No content'}}
+        </div>
+        <app-post *ngIf="post.childPost" [post]="post.childPost"></app-post>
+      </div>
+    </div>
+  </article>
+</a>

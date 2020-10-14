@@ -36,6 +36,11 @@ const routes: Routes = [
     component: CreatePostPageComponent
   },
   {
+    path: 'post/:id',
+    canActivate: [WhenAuthenticatedGuard],
+    component: CreatePostPageComponent // TODO create Post page
+  },
+  {
     path: 'search',
     canActivate: [WhenAuthenticatedGuard],
     component: SearchPageComponent
