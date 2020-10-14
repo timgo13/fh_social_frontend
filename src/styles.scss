@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Import the initial variables
+@import "node_modules/bulma/sass/utilities/initial-variables";
+@import "node_modules/bulma/sass/utilities/functions";
+
+// Set your own initial variables
+$fh_aachen_mint: #00b1ac;
+$fh_aachen_mint-invert: findColorInvert($fh_aachen_mint);
+
+// Set the derived variables
+$primary: $fh_aachen_mint;
+$primary-invert: $fh_aachen_mint-invert;
+
+// Import the rest of Bulma
+@import "node_modules/bulma/bulma";
