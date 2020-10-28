@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginTokenDto } from './dto/login-token.dto';
+import { JwtHelperService } from './jwt-helper.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -20,7 +21,8 @@ export class AuthService {
   };
 
   constructor(private apiService: ApiService,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private jwtHelperService: JwtHelperService) { }
 
   private static buildAuthHeader(): object {
     return {
@@ -57,6 +59,14 @@ export class AuthService {
    */
   logout$(): Observable<object> {
     return this.http.get<object>(this.apiService.apiBaseUrl + '/token/revoke', AuthService.buildAuthHeader());
+  }
+
+  getAuthenticatedUserID(): string | undefined {
+    return this.jwtHelperService.id();
+  }
+
+  getAuthenticatedUserUsername(): string | undefined {
+    return this.jwtHelperService.username();
   }
 }
 

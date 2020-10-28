@@ -16,12 +16,9 @@ export class LoginPageComponent {
               private router: Router) { }
 
   login(): void {
-    console.log(this.username);
-    console.log(this.password);
-
     this.authService.login$(this.username, this.password).subscribe(loginToken => {
-      console.log(loginToken);
-      localStorage.setItem('access_token', loginToken.access_token);
+      const access_token = loginToken.access_token;
+      localStorage.setItem('access_token', access_token);
       this.router.navigate(['']);
     }, error => {
       console.log(error);
