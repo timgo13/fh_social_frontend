@@ -9,7 +9,7 @@ import { PostDto } from '../../services/dto/post.dto';
 export class FeedPageComponent implements OnInit {
 
   posts: PostDto[] = [
-    {id: 1, content: 'Content Post 1', createdDate: new Date(), creatorId: 1, creatorName: 'Name', childPost: {id: 2, content: 'Content Post 2', createdDate: new Date(), creatorId: 1, creatorName: 'Name', childPost: {id: 3, content: 'Content Post 3', createdDate: new Date(), creatorId: 1, creatorName: 'Name'}}},
+    {id: 1, content: 'Content Post 1', createdDate: new Date(), creatorId: 1, creatorName: 'Name', childPost: {id: 2, content: 'Content Post 2', createdDate: new Date(), creatorId: 1, creatorName: 'Name'}},
     {id: 2, content: 'Content Post 2', createdDate: new Date(), creatorId: 1, creatorName: 'Name'},
     {id: 3, content: 'Content Post 3', createdDate: new Date(), creatorId: 1, creatorName: 'Name'},
     {id: 4, content: 'Content Post 4', createdDate: new Date(), creatorId: 1, creatorName: 'Name'},
