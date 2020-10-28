@@ -26,7 +26,7 @@ export class AuthService {
               private jwtHelperService: JwtHelperService,
               private router: Router) { }
 
-  private static buildAuthHeader(): object {
+  public static buildAuthHeader(): object {
     return {
       headers: new HttpHeaders({
         Accept: 'application/json',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostDto } from '../../services/dto/post.dto';
 import { AuthService } from '../../services/auth.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-feed-page',
@@ -16,9 +17,16 @@ export class FeedPageComponent implements OnInit {
     {id: 4, content: 'Content Post 4', createdDate: new Date(), creatorId: 1, creatorName: 'Name'},
     ];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private postService: PostService) { }
 
   ngOnInit(): void {
+    this.postService.getFeed$().subscribe(posts => {
+      console.log(posts);
+      this.posts = posts;
+    }, error => {
+      console.log(error);
+    });
     // TODO load post via Service
   }
 
