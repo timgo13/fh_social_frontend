@@ -16,6 +16,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PostModule } from './shared-components/post/post.module';
 import { HeaderModule } from './shared-components/header/header.module';
 import { PostPageComponent } from './pages/post-page/post-page.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -34,9 +36,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     PostPageComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

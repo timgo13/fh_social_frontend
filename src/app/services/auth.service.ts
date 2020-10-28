@@ -8,10 +8,10 @@ import { LoginTokenDto } from './dto/login-token.dto';
 export class AuthService {
 
   // TODO change to be set in build and deployment
-  clientSecret = 'srKHlpLcnyLaBhZmQsAIuztgY7C0N8gjZPFKjYgu';
+  clientSecret = 'CZZNVs6KyIv1quLBp4hFQ8voUNXNQ1Ndwb7zx4Md';
   clientID = '2';
 
-  authUrl = this.apiService.BaseUrl + '/oauth/token';
+  authUrl = '/oauth/token';
   readonly options = {
     headers: new HttpHeaders({
       Accept: 'application/json',

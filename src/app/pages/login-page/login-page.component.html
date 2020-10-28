@@ -12,20 +12,20 @@
             <div class="field">
               <label class="label" for="input_user">Benutzername</label>
               <div class="control">
-                <input id="input_user" type="text" class="input">
+                <input [(ngModel)]="username" [ngModelOptions]="{standalone: true}" (keydown)="keyDownEventHandler($event)" id="input_user" type="text" class="input">
               </div>
             </div>
 
             <div class="field">
               <label class="label" for="input_password">Password</label>
               <div class="control">
-                <input id="input_password" type="password" class="input">
+                <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" (keydown)="keyDownEventHandler($event)" id="input_password" type="password" class="input">
               </div>
             </div>
 
             <div class="field">
               <div class="control">
-                <button id="button_login" class="button is-primary">{{ 'login.login' | translate}}</button>
+                <button id="button_login" type="button" class="button is-primary" (click)="login()">{{ 'login.login' | translate}}</button>
               </div>
             </div>
 
