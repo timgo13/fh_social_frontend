@@ -22,4 +22,7 @@ export class FeedPageComponent implements OnInit {
     // TODO load post via Service
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
 }

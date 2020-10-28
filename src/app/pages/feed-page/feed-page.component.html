@@ -6,8 +6,9 @@
       <app-post [post]="post"></app-post>
     </div>
 
-    {{ authService.getAuthenticatedUserID() }}
-    {{ authService.getAuthenticatedUserUsername() }}
+
+
+    <button (click)="logout()">LOGOUT</button>
 
   </div>
 </section>

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginTokenDto } from './dto/login-token.dto';
 import { JwtHelperService } from './jwt-helper.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -22,7 +23,8 @@ export class AuthService {
 
   constructor(private apiService: ApiService,
               private http: HttpClient,
-              private jwtHelperService: JwtHelperService) { }
+              private jwtHelperService: JwtHelperService,
+              private router: Router) { }
 
   private static buildAuthHeader(): object {
     return {
@@ -36,7 +38,16 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     if (localStorage.getItem('access_token')) {
-      return true;
+      const now = new Date();
+
+      console.log(this.jwtHelperService.exp());
+
+      if (now > this.jwtHelperService.nbf() && now < this.jwtHelperService.exp()) {
+        return true;
+      } else {
+        localStorage.removeItem('access_token');
+        return false;
+      }
     } else {
       localStorage.removeItem('access_token');
       return false;
@@ -57,11 +68,21 @@ export class AuthService {
   /**
    * Revoke the authenticated user token
    */
-  logout$(): Observable<object> {
-    return this.http.get<object>(this.apiService.apiBaseUrl + '/token/revoke', AuthService.buildAuthHeader());
+  logout$(): Observable<string> {
+    return this.http.get<string>(this.apiService.apiBaseUrl + '/token/revoke', AuthService.buildAuthHeader());
   }
 
-  getAuthenticatedUserID(): string | undefined {
+  logout(): void {
+    this.logout$().subscribe(res => {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/login']);
+    }, error => {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/login']);
+    });
+  }
+
+  getAuthenticatedUserID(): number | undefined {
     return this.jwtHelperService.id();
   }
 

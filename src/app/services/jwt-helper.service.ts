@@ -53,4 +53,18 @@ export class JwtHelperService {
   username(): string {
     return this.attr('username') as string;
   }
+
+  /**
+   * Not before
+   */
+  nbf(): Date {
+    return new Date(+this.attr('nbf') * 1000); // * 1000 for ms
+  }
+
+  /**
+   * Expiration
+   */
+  exp(): Date {
+    return new Date(+this.attr('exp') * 1000); // * 1000 for ms
+  }
 }
