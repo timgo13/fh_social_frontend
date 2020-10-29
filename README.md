@@ -1,27 +1,52 @@
-# FhAachenSocialNetworkFrontend
+# FH Aachen Social Network Frontend
+
+This consumes the API provided by the FH Aachen Social Netowrk Backend project.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
 
-## Development server
+## Project preparations
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Set API token
+	- Replace the auth token you got during the backend setup at the beginning of the file `src/app/services/auth.service.ts`
+	- See backend README.md for more information 
+- Configure Proxy file. For why see Routing ->
+	- check the file `proxy.conf.json` for correct backend configuration. Should be fine if you are using the default port 8000 for laravel and ru n the backend on localhost
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to run
 
-## Build
+Run the following commands:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+npm install
+ng serve --proxy-config proxy.conf.json
+```
+Then open your browser to `localhost:4200`
 
-## Running unit tests
+Also start your backend ;)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Routing
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The Project uses the following paths for API calls:  
+`/api/*`  
+`/oauth/*`  
 
-## Further help
+That means for corret behaviour the backend and frontend are using the same base URL!  
+All frontend pages will be located at  
+`/*`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Examples for local testing envoirment:
+
+`localhost:4200/feed` User Feed page  
+`localhost:4200/api/user` API call
+
+To reroute the trafic to the API during development use a proxy file. Description in __Project preparations__ 
+
+
+Examples for local production envoirment:
+
+`yourdomain.com/feed` User Feed page  
+`yourdomain.com/api/user` API call
+
+To reroute the trafic to the API in production you can use NGINX.
