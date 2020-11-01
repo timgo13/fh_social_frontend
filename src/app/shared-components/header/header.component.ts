@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CurrentPage } from './header-current-page.enum';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -7,6 +8,10 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  private navBarMenuActive = false;
+  @Input() currentPage: CurrentPage;
+  CurrentPage: any = CurrentPage;
 
   constructor(private authService: AuthService) { }
 
@@ -18,4 +23,11 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
 
+  toggleNavBarMenu(): void {
+    this.navBarMenuActive = !this.navBarMenuActive;
+  }
+
+  isNavBarMenuActive(): boolean {
+    return this.navBarMenuActive;
+  }
 }

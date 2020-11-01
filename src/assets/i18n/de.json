@@ -5,6 +5,12 @@
     "password": "Passwort",
     "login": "Anmelden"
   },
+  "navbar": {
+    "logout": "Logout"
+  },
+  "search" : {
+    "title": "Suche"
+  },
   "feed": {
     "title": "Feed"
   },
