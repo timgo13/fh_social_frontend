@@ -8,8 +8,14 @@
   "navbar": {
     "logout": "Logout"
   },
-  "search" : {
-    "title": "Suche"
+  "group" : {
+    "title": "Gruppen"
+  },
+  "user" : {
+    "title": "Benutzer"
+  },
+  "profile" : {
+    "title": "Profil"
   },
   "feed": {
     "title": "Feed"

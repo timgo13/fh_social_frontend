@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
   private navBarMenuActive = false;
   @Input() currentPage: CurrentPage;
   CurrentPage: any = CurrentPage;
+  authenticatedUsername = this.authService.getAuthenticatedUserUsername();
+  authenticatedUserID = this.authService.clientID;
 
   constructor(private authService: AuthService) { }
 

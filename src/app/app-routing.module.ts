@@ -4,11 +4,12 @@ import { FeedPageComponent } from './pages/feed-page/feed-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
 import { CreatePostPageComponent } from './pages/create-post-page/create-post-page.component';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { WhenAuthenticatedGuard } from './services/guards/when-authenticated.guard';
 import { WhenNotAuthenticatedGuard } from './services/guards/when-not-authenticated.guard';
 import { PostPageComponent } from './pages/post-page/post-page.component';
+import { UserSearchPageComponent } from './pages/user-search-page/user-search-page.component';
+import { GroupSearchPageComponent } from './pages/group-search-page/group-search-page.component';
 
 const routes: Routes = [
   {
@@ -22,9 +23,19 @@ const routes: Routes = [
     component: LoginPageComponent
   },
   {
-    path: 'profile/:id',
+    path: 'user',
+    canActivate: [WhenAuthenticatedGuard],
+    component: UserSearchPageComponent
+  },
+  {
+    path: 'user/:id',
     canActivate: [WhenAuthenticatedGuard],
     component: UserPageComponent
+  },
+  {
+    path: 'group',
+    canActivate: [WhenAuthenticatedGuard],
+    component: GroupSearchPageComponent
   },
   {
     path: 'group/:id',
@@ -40,11 +51,6 @@ const routes: Routes = [
     path: 'post',
     canActivate: [WhenAuthenticatedGuard],
     component: CreatePostPageComponent
-  },
-  {
-    path: 'search',
-    canActivate: [WhenAuthenticatedGuard],
-    component: SearchPageComponent
   },
 
   // Fallback when no prior routes is matched

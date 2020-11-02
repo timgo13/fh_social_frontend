@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrentPage } from 'src/app/shared-components/header/header-current-page.enum';
+import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-page',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPageComponent implements OnInit {
 
-  constructor() { }
+  CurrentPage: any = CurrentPage;
+  headerCurrentPage = CurrentPage.USER;
+  userID = this.authService.clientID;
+
+  constructor(private authService: AuthService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    if (this.userID === this.activatedRoute.snapshot.paramMap.get('id')) {
+      this.headerCurrentPage = CurrentPage.PROFILE;
+    }
   }
 
 }

@@ -19,15 +19,26 @@
           {{'feed.title' | translate}}
         </a>
 
-        <a [routerLink]="['/search']" class="navbar-item"
-           [ngClass]="{'is-active': currentPage === CurrentPage.SEARCH}">
-          {{'search.title' | translate}}
+        <a [routerLink]="['/group']" class="navbar-item"
+           [ngClass]="{'is-active': currentPage === CurrentPage.GROUP}">
+          {{'group.title' | translate}}
+        </a>
+
+        <a [routerLink]="['/user']" class="navbar-item"
+           [ngClass]="{'is-active': currentPage === CurrentPage.USER}">
+          {{'user.title' | translate}}
         </a>
 
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" (click)="logout()">
+
+        <a [routerLink]="['/user', authenticatedUserID]" class="navbar-item"
+           [ngClass]="{'is-active': currentPage === CurrentPage.PROFILE}">
+          {{ authenticatedUsername }}
+        </a>
+
+        <a class="navbar-item has-text-weight-bold" (click)="logout()">
           {{'navbar.logout' | translate}}
         </a>
       </div>

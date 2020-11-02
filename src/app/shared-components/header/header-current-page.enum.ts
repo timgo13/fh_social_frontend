@@ -1,7 +1,9 @@
 export enum CurrentPage {
   FEED,
-  SEARCH,
   USER,
+  USERSEARCH,
   GROUP,
-  POST
+  GROUPSEARCH,
+  POST,
+  PROFILE
 }

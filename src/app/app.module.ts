@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FeedPageComponent } from './pages/feed-page/feed-page.component';
 import { CreatePostPageComponent } from './pages/create-post-page/create-post-page.component';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
 
@@ -18,6 +17,8 @@ import { HeaderModule } from './shared-components/header/header.module';
 import { PostPageComponent } from './pages/post-page/post-page.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { GroupSearchPageComponent } from './pages/group-search-page/group-search-page.component';
+import { UserSearchPageComponent } from './pages/user-search-page/user-search-page.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -30,10 +31,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LoginPageComponent,
     FeedPageComponent,
     CreatePostPageComponent,
-    SearchPageComponent,
     UserPageComponent,
     GroupPageComponent,
     PostPageComponent,
+    GroupSearchPageComponent,
+    UserSearchPageComponent,
   ],
   imports: [
     CommonModule,
