@@ -2,7 +2,8 @@
 
 <section class="section scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
   <div class="container is-center">
-    <h1 class="title">{{"feed.title" | translate}}</h1>
+
+    <h1 class="title ">{{"feed.title" | translate}}</h1>
 
     <div *ngFor="let post of posts">
       <app-post [post]="post"></app-post>

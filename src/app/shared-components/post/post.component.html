@@ -3,14 +3,14 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{post.creatorName}}</strong>
+          <strong>{{post.creator.username}}</strong>
           <br>
-          <small>{{post.createdDate | date}}</small>
+          <small>{{post.created_at | date}}</small>
         </p>
         <div class="post_content_wrapper">
           {{post.content ? post.content : 'No content'}}
         </div>
-        <app-post *ngIf="post.childPost" [post]="post.childPost"></app-post>
+        <app-post *ngIf="childPost != null" [post]="childPost"></app-post>
       </div>
     </div>
   </article>

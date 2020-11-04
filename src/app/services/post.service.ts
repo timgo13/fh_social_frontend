@@ -22,4 +22,11 @@ export class PostService {
       AuthService.buildAuthHeader()
     );
   }
+
+  getPost$(id: number): Observable<PostDto> {
+    return this.http.get<PostDto>(
+      this.apiService.apiBaseUrl + '/post/' + id,
+      AuthService.buildAuthHeader()
+    );
+  }
 }

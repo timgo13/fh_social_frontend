@@ -14,3 +14,7 @@ $primary-invert: $fh_aachen_mint-invert;
 
 // Import the rest of Bulma
 @import "node_modules/bulma/bulma";
+
+.container {
+  max-width: 900px !important;
+}

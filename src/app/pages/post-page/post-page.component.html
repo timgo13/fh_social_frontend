@@ -2,7 +2,7 @@
 
 <section class="section">
   <div class="container is-center">
-    <div *ngIf="!post" class="has-text-centered">
+    <div *ngIf="!post && !loading" class="has-text-centered">
       <h1 class="title">{{"post.404" | translate}}</h1>
       <a [routerLink]="'/'">{{"post.back_home" | translate}}</a>
     </div>
