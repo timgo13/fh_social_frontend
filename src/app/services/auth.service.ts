@@ -40,8 +40,6 @@ export class AuthService {
     if (localStorage.getItem('access_token')) {
       const now = new Date();
 
-      console.log(this.jwtHelperService.exp());
-
       if (now > this.jwtHelperService.nbf() && now < this.jwtHelperService.exp()) {
         return true;
       } else {

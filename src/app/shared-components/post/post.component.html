@@ -3,7 +3,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{post.creator.username}}</strong>
+          <strong>{{post.creator.username}}{{ post.group ? ' @ ' + post.group.name : ''}}</strong>
           <br>
           <small>{{post.created_at | date:'medium'}}</small>
         </p>
