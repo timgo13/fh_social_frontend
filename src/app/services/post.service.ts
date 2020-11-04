@@ -15,8 +15,11 @@ export class PostService {
               private http: HttpClient,
               private jwtHelperService: JwtHelperService) { }
 
-  getFeed$(): Observable<PostDto[]> {
+  getFeed$(offset: number, limit: number): Observable<PostDto[]> {
     const id = this.jwtHelperService.id();
-    return this.http.get<PostDto[]>(this.apiService.apiBaseUrl + '/user/' + id + '/feed', AuthService.buildAuthHeader());
+    return this.http.get<PostDto[]>(
+      this.apiService.apiBaseUrl + '/user/' + id + '/feed?offset=' + offset + '&limit=' + limit + '',
+      AuthService.buildAuthHeader()
+    );
   }
 }

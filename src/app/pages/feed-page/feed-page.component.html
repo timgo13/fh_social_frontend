@@ -1,6 +1,6 @@
 <app-header [currentPage]="CurrentPage.FEED"></app-header>
 
-<section class="section">
+<section class="section scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
   <div class="container is-center">
     <h1 class="title">{{"feed.title" | translate}}</h1>
 
