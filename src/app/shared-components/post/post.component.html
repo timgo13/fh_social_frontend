@@ -1,9 +1,9 @@
-<a class="box post" [routerLink]="['/','post', post.id]">
+<div class="box post">
   <article class="media">
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{post.creator.username}}{{ post.group ? ' @ ' + post.group.name : ''}}</strong>
+          <strong><a [routerLink]="['/','user', post.creator.id]">{{post.creator.username}}</a><span *ngIf="post.group"> @ <a [routerLink]="['/','group', post.group.id]">{{ post.group.name }}</a></span></strong>
           <br>
           <small>{{post.created_at | date:'medium'}}</small>
         </p>
@@ -14,4 +14,4 @@
       </div>
     </div>
   </article>
-</a>
+</div>

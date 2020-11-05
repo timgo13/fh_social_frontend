@@ -4,7 +4,7 @@
   <div class="container is-center">
     <div *ngIf="!user && !loading" class="has-text-centered">
       <h1 class="title">{{"user.404" | translate}}</h1>
-      <a [routerLink]="'/'">{{"post.back_home" | translate}}</a>
+      <a [routerLink]="'/'">{{"user.back_home" | translate}}</a>
     </div>
 
     <div *ngIf="!loading && user">

@@ -9,10 +9,13 @@
     "logout": "Logout"
   },
   "group" : {
+    "404": "Gruppe nicht gefunen ¯\\_(ツ)_/¯",
+    "back_home": "Zurück zum Feed",
     "title": "Gruppen"
   },
   "user" : {
     "404": "Benutzer nicht gefunen ¯\\_(ツ)_/¯",
+    "back_home": "Zurück zum Feed",
     "title": "Benutzer",
     "subscriber": "Abonenten",
     "user_subscriptions": "Benutzer Abos",

@@ -1,1 +1,22 @@
 <app-header [currentPage]="CurrentPage.GROUP"></app-header>
+
+<section class="section scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+  <div class="container is-center">
+    <div *ngIf="!group && !loadingGroup" class="has-text-centered">
+      <h1 class="title">{{"group.404" | translate}}</h1>
+      <a [routerLink]="'/'">{{"user.back_home" | translate}}</a>
+    </div>
+
+    <div *ngIf="!loadingGroup && group">
+      <h1 class="title ">{{ group.name }}</h1>
+
+      <button class="button is-primary is-light">SUBSCRIBE</button>
+      <button class="button is-danger is-light">UNSUBSCRIBE</button>
+
+      <div *ngFor="let post of posts">
+        <app-post [post]="post"></app-post>
+      </div>
+    </div>
+
+  </div>
+</section>

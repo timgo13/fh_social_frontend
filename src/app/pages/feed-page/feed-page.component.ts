@@ -28,7 +28,6 @@ export class FeedPageComponent implements OnInit {
   }
 
   onListScroll(): void {
-    console.log('scroll');
     const nativeElement = this.scrollContainer.nativeElement;
 
     // start loading 400px before the bottom
@@ -52,4 +51,5 @@ export class FeedPageComponent implements OnInit {
       this.currentOffset += this.pagesize;
     }
   }
+
 }
