@@ -4,6 +4,8 @@ import { GroupService } from '../../services/group.service';
 import { GroupDto } from '../../services/dto/group.dto';
 import { ActivatedRoute } from '@angular/router';
 import { PostDto } from '../../services/dto/post.dto';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-group-page',
@@ -19,6 +21,11 @@ export class GroupPageComponent implements OnInit {
 
   loadingGroup = true;
 
+  loadingSubscription = true;
+  subscribed = false;
+
+  authenticatedUserID = this.authService.getAuthenticatedUserID();
+
   posts: PostDto[] = [];
   private pagesize = 30;
   private currentOffset = 0;
@@ -26,7 +33,9 @@ export class GroupPageComponent implements OnInit {
   private lastPageSize = this.pagesize;
 
   constructor(private groupService: GroupService,
-              private activatedRoute: ActivatedRoute) { }
+              private userService: UserService,
+              private activatedRoute: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.groupID = this.activatedRoute.snapshot.paramMap.get('id');
@@ -39,13 +48,23 @@ export class GroupPageComponent implements OnInit {
     });
 
     this.loadPostsPage();
+
+    this.userService.getGroupSubscriptions$(this.authenticatedUserID).subscribe(groups => {
+      for (const group of groups) {
+        if (+this.groupID === +group.id) {
+          this.subscribed = true;
+          break;
+        }
+      }
+      this.loadingSubscription = false;
+    });
   }
 
   onListScroll(): void {
     const nativeElement = this.scrollContainer.nativeElement;
 
     // start loading 400px before the bottom
-    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 400) {
+    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 500) {
       this.loadPostsPage();
     }
   }
@@ -64,6 +83,22 @@ export class GroupPageComponent implements OnInit {
 
       this.currentOffset += this.pagesize;
     }
+  }
+
+  onSubscribeClick(): void {
+    this.userService.subscribeToGroup$(this.authenticatedUserID, this.groupID).subscribe(res => {
+      this.subscribed = true;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  onUnsubscribeClick(): void {
+    this.userService.unsubscribeFromGroup$(this.authenticatedUserID, this.groupID).subscribe(res => {
+      this.subscribed = false;
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

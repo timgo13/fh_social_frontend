@@ -31,7 +31,7 @@ export class FeedPageComponent implements OnInit {
     const nativeElement = this.scrollContainer.nativeElement;
 
     // start loading 400px before the bottom
-    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 400) {
+    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 500) {
       this.loadPostsPage();
     }
   }

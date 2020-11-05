@@ -10,8 +10,8 @@
     <div *ngIf="!loadingGroup && group">
       <h1 class="title ">{{ group.name }}</h1>
 
-      <button class="button is-primary is-light">SUBSCRIBE</button>
-      <button class="button is-danger is-light">UNSUBSCRIBE</button>
+      <button *ngIf="!subscribed && !loadingSubscription" class="button is-primary is-light" (click)="onSubscribeClick()">{{ 'group.subscribe' | translate }}</button>
+      <button *ngIf="subscribed && !loadingSubscription" class="button is-danger is-light" (click)="onUnsubscribeClick()">{{ 'group.unsubscribe' | translate }}</button>
 
       <div *ngFor="let post of posts">
         <app-post [post]="post"></app-post>

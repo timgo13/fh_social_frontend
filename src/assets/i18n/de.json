@@ -11,7 +11,9 @@
   "group" : {
     "404": "Gruppe nicht gefunen ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed",
-    "title": "Gruppen"
+    "title": "Gruppen",
+    "subscribe": "Gruppe beitreten",
+    "unsubscribe": "Gruppe verlassen"
   },
   "user" : {
     "404": "Benutzer nicht gefunen ¯\\_(ツ)_/¯",

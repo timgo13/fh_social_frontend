@@ -52,4 +52,19 @@ export class UserService {
       AuthService.buildAuthHeader()
     );
   }
+
+  subscribeToGroup$(userID: string, groupID: string): Observable<string> {
+    return this.http.put<string>(
+      this.apiService.apiBaseUrl + '/user/' + userID + '/subscription/group/' + groupID,
+      {},
+    AuthService.buildAuthHeader()
+    );
+  }
+
+  unsubscribeFromGroup$(userID: string, groupID: string): Observable<string> {
+    return this.http.delete<string>(
+      this.apiService.apiBaseUrl + '/user/' + userID + '/subscription/group/' + groupID,
+      AuthService.buildAuthHeader()
+    );
+  }
 }
