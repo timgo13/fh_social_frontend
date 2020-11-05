@@ -12,10 +12,11 @@
     "title": "Gruppen"
   },
   "user" : {
-    "title": "Benutzer"
-  },
-  "profile" : {
-    "title": "Profil"
+    "404": "Benutzer nicht gefunen ¯\\_(ツ)_/¯",
+    "title": "Benutzer",
+    "subscriber": "Abonenten",
+    "user_subscriptions": "Benutzer Abos",
+    "group_subscriptions": "Gruppen Abos"
   },
   "feed": {
     "title": "Feed"

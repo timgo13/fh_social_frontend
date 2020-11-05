@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GroupSearchPageComponent } from './pages/group-search-page/group-search-page.component';
 import { UserSearchPageComponent } from './pages/user-search-page/user-search-page.component';
+import { UserModule } from './shared-components/user/user.module';
+import { GroupModule } from './shared-components/group/group.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -51,6 +53,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       }
     }),
     PostModule,
+    UserModule,
+    GroupModule,
     HeaderModule,
   ],
   providers: [],

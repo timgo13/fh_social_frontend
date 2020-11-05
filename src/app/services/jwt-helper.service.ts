@@ -43,8 +43,8 @@ export class JwtHelperService {
   /**
    * Get authenticated user's id
    */
-  id(): number {
-    return +this.attr('id');
+  id(): string {
+    return this.attr('id');
   }
 
   /**

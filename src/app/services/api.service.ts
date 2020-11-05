@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  constructor() { }
+  private useSQLAPI = false;
 
   public readonly apiBaseUrl = '/api/v1';
+  public readonly sqlURLPath = this.useSQLAPI ? '/sql' : '';
 }

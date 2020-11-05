@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   // TODO change to be set in build and deployment
-  clientSecret = 'CZZNVs6KyIv1quLBp4hFQ8voUNXNQ1Ndwb7zx4Md';
-  clientID = '2';
+  private clientSecret = 'CZZNVs6KyIv1quLBp4hFQ8voUNXNQ1Ndwb7zx4Md';
+  private clientID = '2';
 
   authUrl = '/oauth/token';
   readonly options = {
@@ -80,7 +80,7 @@ export class AuthService {
     });
   }
 
-  getAuthenticatedUserID(): number | undefined {
+  getAuthenticatedUserID(): string | undefined {
     return this.jwtHelperService.id();
   }
 

@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   @Input() currentPage: CurrentPage;
   CurrentPage: any = CurrentPage;
   authenticatedUsername = this.authService.getAuthenticatedUserUsername();
-  authenticatedUserID = this.authService.clientID;
+  authenticatedUserID = this.authService.getAuthenticatedUserID();
 
   constructor(private authService: AuthService) { }
 

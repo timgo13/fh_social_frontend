@@ -1,1 +1,36 @@
 <app-header [currentPage]="headerCurrentPage"></app-header>
+
+<section class="section">
+  <div class="container is-center">
+    <div *ngIf="!user && !loading" class="has-text-centered">
+      <h1 class="title">{{"user.404" | translate}}</h1>
+      <a [routerLink]="'/'">{{"post.back_home" | translate}}</a>
+    </div>
+
+    <div *ngIf="!loading && user">
+      <h1 class="title ">{{ user.username }}</h1>
+
+      <div class="columns">
+        <div class="column has-text-centered">
+          <h2 class="subtitle">{{ 'user.subscriber' | translate}}</h2>
+          <div *ngFor="let user of userSubscribers">
+            <app-user [user]="user"></app-user>
+          </div>
+        </div>
+        <div class="column has-text-centered">
+          <h2 class="subtitle">{{ 'user.user_subscriptions' | translate}}</h2>
+          <div *ngFor="let user of userSubscriptions">
+            <app-user [user]="user"></app-user>
+          </div>
+        </div>
+        <div class="column has-text-centered">
+          <h2 class="subtitle">{{ 'user.group_subscriptions' | translate}}</h2>
+          <div *ngFor="let group of groupSubscriptions">
+            <app-group [group]="group"></app-group>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
