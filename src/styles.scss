@@ -12,6 +12,9 @@ $fh_aachen_mint-invert: findColorInvert($fh_aachen_mint);
 $primary: $fh_aachen_mint;
 $primary-invert: $fh_aachen_mint-invert;
 
+$tabs-link-active-color: $fh_aachen_mint;
+$tabs-link-active-border-bottom-color: black;
+
 // Import the rest of Bulma
 @import "node_modules/bulma/bulma";
 

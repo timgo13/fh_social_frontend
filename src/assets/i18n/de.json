@@ -6,12 +6,13 @@
     "login": "Anmelden"
   },
   "navbar": {
-    "logout": "Logout"
+    "logout": "Abmelden"
   },
   "group" : {
     "404": "Gruppe nicht gefunen ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed",
     "title": "Gruppen",
+    "subscribed": "Abonniert",
     "subscribe": "Gruppe beitreten",
     "unsubscribe": "Gruppe verlassen"
   },
@@ -19,14 +20,17 @@
     "404": "Benutzer nicht gefunen ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed",
     "title": "Benutzer",
-    "subscriber": "Abonenten",
+    "subscriber": "Abonnenten",
+    "subscribed": "Abonniert",
     "user_subscriptions": "Benutzer Abos",
-    "group_subscriptions": "Gruppen Abos"
+    "group_subscriptions": "Gruppen Abos",
+    "actions": "Aktionen"
   },
   "feed": {
     "title": "Feed"
   },
   "post": {
+    "title": "Posts",
     "404": "Post nicht gefunen ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed"
   }

@@ -1,4 +1,9 @@
 .scrollContainer {
   overflow: auto;
-  height: calc(100vh - 52px);
+  height: calc(100vh - 235px);
+  padding: 0 5px;
+}
+
+section {
+  padding-bottom: 0px;
 }

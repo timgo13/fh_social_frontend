@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { UserDto } from '../../services/dto/user.dto';
+import { ViewState } from './viewState';
 
 @Component({
   selector: 'app-user-page',
@@ -13,6 +14,9 @@ import { UserDto } from '../../services/dto/user.dto';
 export class UserPageComponent implements OnInit {
 
   CurrentPage: any = CurrentPage;
+  ViewState: any = ViewState;
+  viewState: ViewState = ViewState.POSTS;
+
   headerCurrentPage = CurrentPage.USER;
   userID = '';
   user: UserDto;
@@ -57,6 +61,10 @@ export class UserPageComponent implements OnInit {
     this.userService.getUserSubscribers$(this.userID).subscribe(users => {
       this.userSubscribers = users;
     });
+  }
+
+  onListScroll(): void {
+
   }
 
 }

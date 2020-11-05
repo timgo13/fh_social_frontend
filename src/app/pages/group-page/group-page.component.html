@@ -1,6 +1,6 @@
 <app-header [currentPage]="CurrentPage.GROUP"></app-header>
 
-<section class="section scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+<section class="section">
   <div class="container is-center">
     <div *ngIf="!group && !loadingGroup" class="has-text-centered">
       <h1 class="title">{{"group.404" | translate}}</h1>
@@ -8,14 +8,33 @@
     </div>
 
     <div *ngIf="!loadingGroup && group">
-      <h1 class="title ">{{ group.name }}</h1>
+      <h1 class="title ">{{ group.name }} <span *ngIf="subscribed" class="tag is-primary is-light">{{ 'group.subscribed' | translate }}</span></h1>
 
-      <button *ngIf="!subscribed && !loadingSubscription" class="button is-primary is-light" (click)="onSubscribeClick()">{{ 'group.subscribe' | translate }}</button>
-      <button *ngIf="subscribed && !loadingSubscription" class="button is-danger is-light" (click)="onUnsubscribeClick()">{{ 'group.unsubscribe' | translate }}</button>
-
-      <div *ngFor="let post of posts">
-        <app-post [post]="post"></app-post>
+      <div class="tabs is-medium">
+        <ul>
+          <li [ngClass]="{'is-active':viewState === ViewState.POSTS}" (click)="viewState = ViewState.POSTS"><a>{{ 'post.title' | translate }}</a></li>
+          <li [ngClass]="{'is-active':viewState === ViewState.SUBSCRIBERS}" (click)="viewState = ViewState.SUBSCRIBERS"><a>{{ 'user.subscriber' | translate }}</a></li>
+          <li [ngClass]="{'is-active':viewState === ViewState.ACTIONS}" (click)="viewState = ViewState.ACTIONS"><a>{{ 'user.actions' | translate }}</a></li>
+        </ul>
       </div>
+
+      <div *ngIf="viewState == ViewState.POSTS" class="scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+        <div *ngFor="let post of posts">
+          <app-post [post]="post"></app-post>
+        </div>
+      </div>
+
+      <div *ngIf="viewState == ViewState.SUBSCRIBERS">
+        <div *ngFor="let user of subscribers">
+          <app-user [user]="user"></app-user>
+        </div>
+      </div>
+
+      <div *ngIf="viewState == ViewState.ACTIONS" class="scrollContainer">
+        <button *ngIf="!subscribed && !loadingSubscription" class="button is-primary is-light" (click)="onSubscribeClick()">{{ 'group.subscribe' | translate }}</button>
+        <button *ngIf="subscribed && !loadingSubscription" class="button is-danger is-light" (click)="onUnsubscribeClick()">{{ 'group.unsubscribe' | translate }}</button>
+      </div>
+
     </div>
 
   </div>

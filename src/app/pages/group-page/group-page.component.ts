@@ -2,10 +2,12 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CurrentPage } from 'src/app/shared-components/header/header-current-page.enum';
 import { GroupService } from '../../services/group.service';
 import { GroupDto } from '../../services/dto/group.dto';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostDto } from '../../services/dto/post.dto';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { ViewState } from './viewState';
+import { UserDto } from '../../services/dto/user.dto';
 
 @Component({
   selector: 'app-group-page',
@@ -16,6 +18,9 @@ export class GroupPageComponent implements OnInit {
   @ViewChild('scrollContainer') scrollContainer: ElementRef;
 
   CurrentPage: any = CurrentPage;
+  ViewState: any = ViewState;
+  viewState: ViewState = ViewState.POSTS;
+
   groupID = '';
   group: GroupDto;
 
@@ -32,10 +37,17 @@ export class GroupPageComponent implements OnInit {
   private loadingPost = false;
   private lastPageSize = this.pagesize;
 
+  subscribers: UserDto[] = [];
+
   constructor(private groupService: GroupService,
               private userService: UserService,
               private activatedRoute: ActivatedRoute,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  }
 
   ngOnInit(): void {
     this.groupID = this.activatedRoute.snapshot.paramMap.get('id');
@@ -58,6 +70,10 @@ export class GroupPageComponent implements OnInit {
       }
       this.loadingSubscription = false;
     });
+
+    //this.userService.getGroupSubscribers$() {
+
+    //}
   }
 
   onListScroll(): void {
