@@ -32,6 +32,13 @@ export class UserService {
     );
   }
 
+  getPosts$(userID: string, offset: number, limit: number): Observable<PostDto[]> {
+    return this.http.get<PostDto[]>(
+      this.apiService.apiBaseUrl + '/user/' + userID + '/post' + this.apiService.sqlURLPath + '?offset=' + offset + '&limit=' + limit + '',
+      AuthService.buildAuthHeader()
+    );
+  }
+
   getUserSubscriptions$(userID: string): Observable<UserDto[]> {
     return this.http.get<UserDto[]>(
       this.apiService.apiBaseUrl + '/user/' + userID + '/subscription/user' + this.apiService.sqlURLPath,

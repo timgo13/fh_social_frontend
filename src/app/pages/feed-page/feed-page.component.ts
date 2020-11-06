@@ -30,13 +30,13 @@ export class FeedPageComponent implements OnInit {
   onListScroll(): void {
     const nativeElement = this.scrollContainer.nativeElement;
 
-    // start loading 400px before the bottom
+    // start loading 500px before the bottom
     if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 500) {
       this.loadPostsPage();
     }
   }
 
-  loadPostsPage(): void {
+  private loadPostsPage(): void {
     if (!this.loading && this.lastPageSize === this.pagesize) { // check if the last loaded page was smaller then the regular page size
       this.loading = true;
 

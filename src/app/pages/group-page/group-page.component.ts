@@ -89,7 +89,7 @@ export class GroupPageComponent implements OnInit {
     }
   }
 
-  loadPostsPage(): void {
+  private loadPostsPage(): void {
     if (!this.loadingPost && this.lastPageSize === this.pagesize) { // check if the last loaded page was smaller then the regular page size
       this.loadingPost = true;
 
