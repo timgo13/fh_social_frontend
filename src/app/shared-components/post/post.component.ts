@@ -8,4 +8,14 @@ import { PostDto } from '../../services/dto/post.dto';
 })
 export class PostComponent {
   @Input() post: PostDto;
+
+  shareModalActive = false;
+
+  onShareClick(): void {
+    this.shareModalActive = true;
+  }
+
+  onCloseModalClick(): void {
+    this.shareModalActive = false;
+  }
 }

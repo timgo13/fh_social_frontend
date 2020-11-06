@@ -1,12 +1,14 @@
 <app-header [currentPage]="CurrentPage.FEED"></app-header>
 
-<section class="section scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+<section class="section">
   <div class="container is-center">
 
     <h1 class="title ">{{"feed.title" | translate}}</h1>
 
-    <div *ngFor="let post of posts">
-      <app-post [post]="post"></app-post>
+    <div class="scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+      <div *ngFor="let post of posts">
+        <app-post [post]="post"></app-post>
+      </div>
     </div>
 
   </div>
