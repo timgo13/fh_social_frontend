@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { GroupDto } from './dto/group.dto';
 import { PostDto } from './dto/post.dto';
+import { UserDto } from './dto/user.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,13 @@ export class GroupService {
     return this.http.get<PostDto[]>(
       // tslint:disable-next-line:max-line-length
       this.apiService.apiBaseUrl + '/group/' + groupID + '/post' + this.apiService.sqlURLPath + '?offset=' + offset + '&limit=' + limit + '',
+      AuthService.buildAuthHeader()
+    );
+  }
+
+  getSubscribers$(groupID: string): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(
+      this.apiService.apiBaseUrl + '/group/' + groupID + '/subscriber' + this.apiService.sqlURLPath,
       AuthService.buildAuthHeader()
     );
   }

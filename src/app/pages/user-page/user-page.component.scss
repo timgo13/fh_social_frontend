@@ -1,9 +1,13 @@
 .scrollContainer {
   overflow: auto;
-  height: calc(100vh - 235px);
+  height: calc(100vh - 211px);
   padding: 0 5px;
 }
 
 section {
   padding-bottom: 0px;
+}
+
+.actions {
+  margin: 15px;
 }

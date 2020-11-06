@@ -71,9 +71,13 @@ export class GroupPageComponent implements OnInit {
       this.loadingSubscription = false;
     });
 
-    //this.userService.getGroupSubscribers$() {
+    this.loadSubscribers();
+  }
 
-    //}
+  loadSubscribers(): void {
+    this.groupService.getSubscribers$(this.groupID).subscribe(subscribers => {
+      this.subscribers = subscribers;
+    });
   }
 
   onListScroll(): void {
@@ -104,6 +108,7 @@ export class GroupPageComponent implements OnInit {
   onSubscribeClick(): void {
     this.userService.subscribeToGroup$(this.authenticatedUserID, this.groupID).subscribe(res => {
       this.subscribed = true;
+      this.loadSubscribers();
     }, error => {
       console.log(error);
     });
@@ -112,6 +117,7 @@ export class GroupPageComponent implements OnInit {
   onUnsubscribeClick(): void {
     this.userService.unsubscribeFromGroup$(this.authenticatedUserID, this.groupID).subscribe(res => {
       this.subscribed = false;
+      this.loadSubscribers();
     }, error => {
       console.log(error);
     });

@@ -24,13 +24,13 @@
         </div>
       </div>
 
-      <div *ngIf="viewState == ViewState.SUBSCRIBERS">
+      <div *ngIf="viewState == ViewState.SUBSCRIBERS" class="scrollContainer">
         <div *ngFor="let user of subscribers">
           <app-user [user]="user"></app-user>
         </div>
       </div>
 
-      <div *ngIf="viewState == ViewState.ACTIONS" class="scrollContainer">
+      <div *ngIf="viewState == ViewState.ACTIONS" class="actions">
         <button *ngIf="!subscribed && !loadingSubscription" class="button is-primary is-light" (click)="onSubscribeClick()">{{ 'group.subscribe' | translate }}</button>
         <button *ngIf="subscribed && !loadingSubscription" class="button is-danger is-light" (click)="onUnsubscribeClick()">{{ 'group.unsubscribe' | translate }}</button>
       </div>
