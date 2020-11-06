@@ -11,7 +11,7 @@ import { GroupPageComponent } from './pages/group-page/group-page.component';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { PostModule } from './shared-components/post/post.module';
 import { HeaderModule } from './shared-components/header/header.module';
 import { PostPageComponent } from './pages/post-page/post-page.component';
@@ -21,6 +21,7 @@ import { GroupSearchPageComponent } from './pages/group-search-page/group-search
 import { UserSearchPageComponent } from './pages/user-search-page/user-search-page.component';
 import { UserModule } from './shared-components/user/user.module';
 import { GroupModule } from './shared-components/group/group.module';
+import { AuthInterceptor } from './services/AuthInterceptor';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -57,7 +58,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     GroupModule,
     HeaderModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
