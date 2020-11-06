@@ -25,6 +25,9 @@ export class UserPageComponent implements OnInit {
   private loadingPosts = false;
   private lastPageSize = this.pagesize;
 
+  loadingSubscription = true;
+  subscribed = false;
+
   headerCurrentPage = CurrentPage.USER;
   userID = '';
   user: UserDto;
@@ -68,9 +71,17 @@ export class UserPageComponent implements OnInit {
       this.userSubscriptions = users;
     });
 
-    this.userService.getUserSubscribers$(this.userID).subscribe(users => {
-      this.userSubscribers = users;
+    this.userService.getUserSubscriptions$(this.authenticatedUserID).subscribe(users => {
+      for (const user of users) {
+        if (+this.userID === +user.id) {
+          this.subscribed = true;
+          break;
+        }
+      }
+      this.loadingSubscription = false;
     });
+
+    this.loadUserSubscribers();
   }
 
   onListScroll(): void {
@@ -80,6 +91,12 @@ export class UserPageComponent implements OnInit {
     if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 500) {
       this.loadPostsPage();
     }
+  }
+
+  loadUserSubscribers(): void {
+    this.userService.getUserSubscribers$(this.userID).subscribe(users => {
+      this.userSubscribers = users;
+    });
   }
 
   private loadPostsPage(): void {
@@ -96,6 +113,24 @@ export class UserPageComponent implements OnInit {
 
       this.currentOffset += this.pagesize;
     }
+  }
+
+  onSubscribeClick(): void {
+    this.userService.subscribeToUser$(this.authenticatedUserID, this.userID).subscribe(res => {
+      this.subscribed = true;
+      this.loadUserSubscribers();
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  onUnsubscribeClick(): void {
+    this.userService.unsubscribeFromUser$(this.authenticatedUserID, this.userID).subscribe(res => {
+      this.subscribed = false;
+      this.loadUserSubscribers();
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

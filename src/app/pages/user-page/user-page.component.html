@@ -8,7 +8,7 @@
     </div>
 
     <div *ngIf="!loading && user">
-      <h1 class="title ">{{ user.username }}</h1>
+      <h1 class="title ">{{ user.username }} <span *ngIf="subscribed" class="tag is-primary is-light">{{ 'group.subscribed' | translate }}</span></h1>
 
       <div class="tabs is-medium">
         <ul>
@@ -46,7 +46,8 @@
       </div>
 
       <div *ngIf="viewState == ViewState.ACTIONS" class="actions">
-        TODO
+        <button *ngIf="!subscribed && !loadingSubscription" class="button is-primary is-light" (click)="onSubscribeClick()">{{ 'user.subscribe' | translate }}</button>
+        <button *ngIf="subscribed && !loadingSubscription" class="button is-danger is-light" (click)="onUnsubscribeClick()">{{ 'user.unsubscribe' | translate }}</button>
       </div>
 
     </div>

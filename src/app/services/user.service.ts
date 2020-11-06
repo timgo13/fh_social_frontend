@@ -74,4 +74,20 @@ export class UserService {
       AuthService.buildAuthHeader()
     );
   }
+
+  subscribeToUser$(subscriberID: string, publischerID: string): Observable<string> {
+    return this.http.put<string>(
+      this.apiService.apiBaseUrl + '/user/' + subscriberID + '/subscription/user/' + publischerID,
+      {},
+      AuthService.buildAuthHeader()
+    );
+  }
+
+  unsubscribeFromUser$(subscriberID: string, publischerID: string): Observable<string> {
+    return this.http.delete<string>(
+      this.apiService.apiBaseUrl + '/user/' + subscriberID + '/subscription/user/' + publischerID,
+      AuthService.buildAuthHeader()
+    );
+  }
+
 }

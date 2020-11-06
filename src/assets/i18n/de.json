@@ -24,7 +24,9 @@
     "subscribed": "Abonniert",
     "user_subscriptions": "Benutzer Abos",
     "group_subscriptions": "Gruppen Abos",
-    "actions": "Aktionen"
+    "actions": "Aktionen",
+    "subscribe": "Benutzer abonnieren",
+    "unsubscribe": "Benutzer nicht mehr abonnieren"
   },
   "feed": {
     "title": "Feed"
