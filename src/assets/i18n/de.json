@@ -54,14 +54,17 @@
     "title": "Posts",
     "404": "Post nicht gefunen ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed",
-    "share": "Teilen",
-    "cancel": "Abbrechen",
     "create": {
       "create-post": "Post erstellen",
       "placeholder": "Dein Post ...",
       "submit": "Post erstellen",
       "to_short": "Post zu kurz!",
       "done": "Post erstellt!"
+    },
+    "share": {
+      "title": "",
+      "submit": "Teilen",
+      "cancel": "Abbrechen"
     }
   }
 }
