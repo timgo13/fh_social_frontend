@@ -40,7 +40,7 @@
     <section class="modal-card-body">
       <div *ngIf="!postCreated">
         <label for="groupSelector">{{ 'post.share.share-in' | translate }}</label>
-        <ng-select id="groupSelector" [(ngModel)]="selectedGroupID" (change)="groupSelected()">
+        <ng-select id="groupSelector" [(ngModel)]="selectedGroupID" (change)="groupSelected()" (clear)="groupSelected()">
           <ng-option *ngFor="let group of groups" [value]="group.id">{{group.name}}</ng-option>
         </ng-select>
       </div>

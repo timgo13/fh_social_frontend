@@ -89,9 +89,11 @@ export class PostComponent implements OnInit {
     for (const group of this.groups) {
       if (group.id === this.selectedGroupID) {
         this.selectedGroup = group;
-        break;
+        return;
       }
     }
+
+    this.selectedGroup = undefined;
   }
 
 }
