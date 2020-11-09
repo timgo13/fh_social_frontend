@@ -39,13 +39,19 @@
     }
   },
   "feed": {
-    "title": "Feed"
+    "title": "Feed",
+    "create-post": "Post erstellen"
   },
   "post": {
     "title": "Posts",
     "404": "Post nicht gefunen ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed",
     "share": "Teilen",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "create": {
+      "placeholder": "Dein Post ...",
+      "submit": "Post erstellen",
+      "to_short": "Post zu kurz!"
+    }
   }
 }

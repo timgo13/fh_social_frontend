@@ -1,0 +1,25 @@
+<div class="wrapper">
+
+  <h2 class="subtitle" (click)="this.open = !this.open">
+    {{ 'feed.create-post' | translate}}
+    <span *ngIf="!open">&#x25BC;</span>
+    <span *ngIf="open">&#x25B2;</span>
+  </h2>
+
+  <div *ngIf="open && !postCreated">
+    <div class="field">
+      <div class="control">
+        <textarea class="textarea" placeholder="{{ 'post.create.placeholder' | translate }}"  [(ngModel)]="createPostDto.content"></textarea>
+      </div>
+    </div>
+
+    <p class="has-text-danger has-text-centered has-text-weight-bold" *ngIf="toShort">{{ 'post.create.to_short'| translate }}</p>
+
+    <div class="field is-grouped is-grouped-right">
+      <div class="control">
+        <button [ngClass]="{ 'disabled': loading }" class="button is-warning" (click)="submit()">{{ 'post.create.submit' | translate }}</button>
+      </div>
+    </div>
+  </div>
+
+</div>
