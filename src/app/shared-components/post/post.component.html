@@ -34,80 +34,18 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">{{ '' | translate }}_Modal title</p>
+      <p class="modal-card-title">{{ 'post.share.title' | translate }}</p>
       <button class="delete" aria-label="close" (click)="onCloseModalClick()"></button>
     </header>
     <section class="modal-card-body">
-      <div>
-        <input type="radio" id="private"value="private" [(ngModel)]="privateShare">
-        <label for="private">_Persöhnlicher Account</label>
-        <br>
-        <input type="radio" id="group" value="group" [(ngModel)]="!privateShare">
-        <label for="group">_Gruppe</label>
+      <div *ngIf="!postCreated">
+        <label for="groupSelector">{{ 'post.share.share-in' | translate }}</label>
+        <ng-select id="groupSelector" [(ngModel)]="selectedGroupID" (change)="groupSelected()">
+          <ng-option *ngFor="let group of groups" [value]="group.id">{{group.name}}</ng-option>
+        </ng-select>
       </div>
 
-      <div class="container">
-        <label class="label">Live Search</label>
-        <p class="control">
-          <select class="selectpicker" >
-            <option value=""></option>
-            <option value="Albania">Albania</option>
-            <option value="Andorra">Andorra</option>
-            <option value="Armenia">Armenia</option>
-            <option value="Austria">Austria</option>
-            <option value="Azerbaijan">Azerbaijan</option>
-            <option value="Belarus">Belarus</option>
-            <option value="Belgium">Belgium</option>
-            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-            <option value="Bulgaria">Bulgaria</option>
-            <option value="Croatia">Croatia</option>
-            <option value="Cyprus">Cyprus</option>
-            <option value="Czechia">Czechia</option>
-            <option value="Denmark">Denmark</option>
-            <option value="Estonia">Estonia</option>
-            <option value="Finland">Finland</option>
-            <option value="France">France</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Germany">Germany</option>
-            <option value="Greece">Greece</option>
-            <option value="Hungary">Hungary</option>
-            <option value="Iceland">Iceland</option>
-            <option value="Ireland">Ireland</option>
-            <option value="Italy">Italy</option>
-            <option value="Kazakhstan">Kazakhstan</option>
-            <option value="Kosovo">Kosovo</option>
-            <option value="Latvia">Latvia</option>
-            <option value="Liechtenstein">Liechtenstein</option>
-            <option value="Lithuania">Lithuania</option>
-            <option value="Luxembourg">Luxembourg</option>
-            <option value="Malta">Malta</option>
-            <option value="Moldova">Moldova</option>
-            <option value="Monaco">Monaco</option>
-            <option value="Montenegro">Montenegro</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="North Macedonia">North Macedonia</option>
-            <option value="Norway">Norway</option>
-            <option value="Poland">Poland</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Romania">Romania</option>
-            <option value="Russia">Russia</option>
-            <option value="San Marino">San Marino</option>
-            <option value="Serbia">Serbia</option>
-            <option value="Slovakia">Slovakia</option>
-            <option value="Slovenia">Slovenia</option>
-            <option value="Spain">Spain</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Turkey">Turkey</option>
-            <option value="Ukraine">Ukraine</option>
-            <option value="United Kingdom (UK)">United Kingdom (UK)
-            <option value="Vatican City">Vatican City</option>
-
-          </select>
-        </p>
-      </div>
-
-
+      <span *ngIf="postCreated" class="has-text-primary">{{ 'post.share.done' | translate }}</span>
 
       <div class="box post">
         <!-- new post START-->
@@ -115,16 +53,18 @@
           <div class="media-content">
             <div class="content">
               <p>
-                <strong>{{authenticatedUserUsername}}<span *ngIf="post.group"> @ {{ post.group.name }}</span></strong>
+                <strong>{{authenticatedUserUsername}}<span *ngIf="selectedGroup"> @ {{ selectedGroup.name }}</span></strong>
                 <br>
                 <small>{{currentDate | date:'medium'}}</small>
               </p>
               <div class="post_content_wrapper">
-                <div class="control">
-                  <textarea class="textarea" placeholder="{{ 'group.post.create.placeholder' | translate }}"  [(ngModel)]="createPostDto.content"></textarea>
+                <span *ngIf="postCreated">{{createPostDto.content}}</span>
+                <div class="control"  *ngIf="!postCreated">
+                  <textarea class="textarea" placeholder="{{ 'post.share.placeholder' | translate }}"  [(ngModel)]="createPostDto.content"></textarea>
                 </div>
               </div>
 
+              <p class="has-text-danger has-text-centered has-text-weight-bold" *ngIf="toShort">{{ 'post.create.to_short'| translate }}</p>
 
               <!-- shared post START -->
               <div class="box post">
@@ -157,9 +97,9 @@
 
       </div>
     </section>
-    <footer class="modal-card-foot">
+    <footer class="modal-card-foot" *ngIf="!postCreated">
       <button class="button" (click)="onCloseModalClick()">{{ 'post.share.cancel' | translate }}</button>
-      <button class="button is-success" (click)="onSubmitSharePostClick()">{{ 'post.share.submit' | translate }}</button>
+      <button [ngClass]="{ 'disabled': loading }" class="button is-success" (click)="onSubmitSharePostClick()">{{ 'post.share.submit' | translate }}</button>
     </footer>
   </div>
 </div>

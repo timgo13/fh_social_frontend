@@ -62,9 +62,14 @@
       "done": "Post erstellt!"
     },
     "share": {
-      "title": "",
+      "title": "Post Teilen",
       "submit": "Teilen",
-      "cancel": "Abbrechen"
+      "cancel": "Abbrechen",
+      "share-in": "Teilen in:",
+      "group-not-found": "Keine Gruppe gefunden!",
+      "no-group": "Keine Gruppe ausgewählt -> In eigenem Profil teilen",
+      "placeholder": "Dein Post ...",
+      "done": "Post geteilt!"
     }
   }
 }

@@ -4,6 +4,7 @@ import { PostComponent } from './post.component';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     TranslateModule,
     FormsModule,
+    NgSelectModule,
   ],
   exports: [PostComponent]
 })
