@@ -36,4 +36,11 @@ export class GroupService {
       AuthService.buildAuthHeader()
     );
   }
+
+  searchGroup$(query: string): Observable<GroupDto[]> {
+    return this.http.get<GroupDto[]>(this.apiService.apiBaseUrl + '/group/search?query= ' + query,
+      AuthService.buildAuthHeader()
+    );
+  }
+
 }

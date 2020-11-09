@@ -1,3 +1,26 @@
 <app-header [currentPage]="CurrentPage.GROUPSEARCH"></app-header>
 
-<p>group-search-page works!</p>
+<section class="section">
+  <div class="container is-center">
+
+    <h1 class="title ">{{ 'group.search.title' | translate }}</h1>
+
+    <div class="control searchbar">
+      <input [(ngModel)]="query" (ngModelChange)="onSearchType()" class="input" type="text" placeholder="{{ 'group.search.searchplaceholder' | translate }}">
+    </div>
+
+    <div class="scrollContainer">
+
+      <progress *ngIf="loading" class="progress is-small is-primary" max="100">15%</progress>
+
+      <div class="subtitle has-text-danger-dark has-text-centered warning error-message" *ngIf="groups.length === 0 && !loading && !noSearchYet">
+        {{ 'group.search.error' | translate }}
+      </div>
+
+      <div *ngFor="let group of groups">
+        <app-group [group]="group"></app-group>
+      </div>
+    </div>
+
+  </div>
+</section>

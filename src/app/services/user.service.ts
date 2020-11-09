@@ -90,4 +90,10 @@ export class UserService {
     );
   }
 
+  searchUsers$(query: string): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(this.apiService.apiBaseUrl + '/user/search?query= ' + query,
+      AuthService.buildAuthHeader()
+    );
+  }
+
 }

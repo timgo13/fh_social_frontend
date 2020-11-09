@@ -14,7 +14,12 @@
     "title": "Gruppen",
     "subscribed": "Abonniert",
     "subscribe": "Gruppe beitreten",
-    "unsubscribe": "Gruppe verlassen"
+    "unsubscribe": "Gruppe verlassen",
+    "search": {
+      "title": "Gruppe suchen",
+      "searchplaceholder": "Name eingeben...",
+      "error": "Keine Gruppen gefunden"
+    }
   },
   "user" : {
     "404": "Benutzer nicht gefunen ¯\\_(ツ)_/¯",
@@ -26,7 +31,12 @@
     "group_subscriptions": "Gruppen Abos",
     "actions": "Aktionen",
     "subscribe": "Benutzer abonnieren",
-    "unsubscribe": "Benutzer nicht mehr abonnieren"
+    "unsubscribe": "Benutzer nicht mehr abonnieren",
+    "search": {
+      "title": "Benutzer suchen",
+      "searchplaceholder": "Name eingeben...",
+      "error": "Keine Benutzer gefunden"
+    }
   },
   "feed": {
     "title": "Feed"
@@ -34,6 +44,8 @@
   "post": {
     "title": "Posts",
     "404": "Post nicht gefunen ¯\\_(ツ)_/¯",
-    "back_home": "Zurück zum Feed"
+    "back_home": "Zurück zum Feed",
+    "share": "Teilen",
+    "cancel": "Abbrechen"
   }
 }

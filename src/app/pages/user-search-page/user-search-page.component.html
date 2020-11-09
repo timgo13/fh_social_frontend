@@ -1,4 +1,26 @@
 <app-header [currentPage]="CurrentPage.USERSEARCH"></app-header>
 
+<section class="section">
+  <div class="container is-center">
 
-<p>user-search-page works!</p>
+    <h1 class="title ">{{ 'user.search.title' | translate }}</h1>
+
+    <div class="control searchbar">
+      <input [(ngModel)]="query" (ngModelChange)="onSearchType()" class="input" type="text" placeholder="{{ 'user.search.searchplaceholder' | translate }}">
+    </div>
+
+    <div class="scrollContainer">
+
+      <progress *ngIf="loading" class="progress is-small is-primary" max="100">15%</progress>
+
+      <div class="subtitle has-text-danger-dark has-text-centered warning error-message" *ngIf="users.length === 0 && !loading && !noSearchYet">
+        {{ 'user.search.error' | translate }}
+      </div>
+
+      <div *ngFor="let user of users">
+        <app-user [user]="user"></app-user>
+      </div>
+    </div>
+
+  </div>
+</section>
