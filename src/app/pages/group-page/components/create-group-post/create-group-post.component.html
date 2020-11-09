@@ -1,0 +1,25 @@
+<div class="wrapper">
+
+  <h2 class="subtitle" *ngIf="!postCreated">
+    {{ 'group.post.create.create-post' | translate}}
+  </h2>
+
+  <span *ngIf="postCreated" class="has-text-primary">{{ 'group.post.create.done' | translate }}</span>
+
+  <div *ngIf="!postCreated">
+    <div class="field">
+      <div class="control">
+        <textarea class="textarea" placeholder="{{ 'group.post.create.placeholder' | translate }}"  [(ngModel)]="createPostDto.content"></textarea>
+      </div>
+    </div>
+
+    <p class="has-text-danger has-text-centered has-text-weight-bold" *ngIf="toShort">{{ 'group.post.create.to_short'| translate }}</p>
+
+    <div class="field is-grouped is-grouped-right">
+      <div class="control">
+        <button [ngClass]="{ 'disabled': loading }" class="button is-warning" (click)="submit()">{{ 'group.post.create.submit' | translate }}</button>
+      </div>
+    </div>
+  </div>
+
+</div>

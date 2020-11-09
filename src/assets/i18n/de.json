@@ -19,6 +19,15 @@
       "title": "Gruppe suchen",
       "searchplaceholder": "Name eingeben...",
       "error": "Keine Gruppen gefunden"
+    },
+    "post": {
+      "create": {
+        "create-post": "Gruppenpost erstellen",
+        "placeholder": "Dein Post ...",
+        "submit": "Gruppenpost erstellen",
+        "to_short": "Post zu kurz!",
+        "done": "Gruppenpost erstellt!"
+      }
     }
   },
   "user" : {
@@ -39,8 +48,7 @@
     }
   },
   "feed": {
-    "title": "Feed",
-    "create-post": "Post erstellen"
+    "title": "Feed"
   },
   "post": {
     "title": "Posts",
@@ -49,9 +57,11 @@
     "share": "Teilen",
     "cancel": "Abbrechen",
     "create": {
+      "create-post": "Post erstellen",
       "placeholder": "Dein Post ...",
       "submit": "Post erstellen",
-      "to_short": "Post zu kurz!"
+      "to_short": "Post zu kurz!",
+      "done": "Post erstellt!"
     }
   }
 }

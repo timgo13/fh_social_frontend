@@ -19,6 +19,8 @@
       </div>
 
       <div *ngIf="viewState == ViewState.POSTS" class="scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+        <app-create-group-post *ngIf="subscribed" [groupID]="groupID"></app-create-group-post>
+
         <div *ngFor="let post of posts">
           <app-post [post]="post"></app-post>
         </div>

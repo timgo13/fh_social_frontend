@@ -22,7 +22,8 @@ import { UserSearchPageComponent } from './pages/user-search-page/user-search-pa
 import { UserModule } from './shared-components/user/user.module';
 import { GroupModule } from './shared-components/group/group.module';
 import { AuthInterceptor } from './services/AuthInterceptor';
-import { CreatePostComponent } from './pages/feed-page/components/create-post/create-post.component';
+import { CreatePrivatePostComponent } from './pages/feed-page/components/create-post/create-private-post.component';
+import { CreateGroupPostComponent } from './pages/group-page/components/create-group-post/create-group-post.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -40,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     PostPageComponent,
     GroupSearchPageComponent,
     UserSearchPageComponent,
-    CreatePostComponent,
+    CreatePrivatePostComponent,
+    CreateGroupPostComponent,
   ],
   imports: [
     CommonModule,

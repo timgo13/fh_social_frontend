@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CreatePostDto} from '../../../../services/dto/create-post.dto';
 import { PostService } from '../../../../services/post.service';
-import { CreatePostDto } from '../../../../services/dto/create-post.dto';
 import { AuthService } from '../../../../services/auth.service';
 
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.scss']
+  selector: 'app-create-group-post',
+  templateUrl: './create-group-post.component.html',
+  styleUrls: ['./create-group-post.component.scss']
 })
-export class CreatePostComponent implements OnInit{
+export class CreateGroupPostComponent implements OnInit {
 
-  open = false;
+  @Input() groupID: string;
+
   toShort = false;
   loading = false;
   postCreated = false;
@@ -22,7 +23,7 @@ export class CreatePostComponent implements OnInit{
   ngOnInit(): void {
     this.createPostDto.content = '';
     this.createPostDto.creator_id = this.authService.getAuthenticatedUserID();
-    this.createPostDto.user_feed_id = this.createPostDto.creator_id;
+    this.createPostDto.group_feed_id = this.groupID;
   }
 
   submit(): void {

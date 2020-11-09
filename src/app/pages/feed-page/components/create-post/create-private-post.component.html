@@ -1,10 +1,12 @@
 <div class="wrapper">
 
-  <h2 class="subtitle" (click)="this.open = !this.open">
-    {{ 'feed.create-post' | translate}}
-    <span *ngIf="!open">&#x25BC;</span>
-    <span *ngIf="open">&#x25B2;</span>
+  <h2 class="subtitle" (click)="this.open = !this.open" *ngIf="!postCreated">
+    {{ 'post.create.create-post' | translate}}
+    <span *ngIf="!open && !postCreated">&#x25BC;</span>
+    <span *ngIf="open && !postCreated">&#x25B2;</span>
   </h2>
+
+  <span *ngIf="postCreated" class="has-text-primary">{{ 'post.create.done' | translate }}</span>
 
   <div *ngIf="open && !postCreated">
     <div class="field">
