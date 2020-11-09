@@ -3,17 +3,24 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><a [routerLink]="['/','user', post.creator.id]">{{post.creator.username}}</a><span *ngIf="post.group"> @ <a [routerLink]="['/','group', post.group.id]">{{ post.group.name }}</a></span></strong>
+          <strong *ngIf="showShareButtonAndLinks">
+            <a [routerLink]="['/','user', post.creator.id]">{{post.creator.username}}</a>
+            <span *ngIf="post.group"> @ <a [routerLink]="['/','group', post.group.id]">{{ post.group.name }}</a></span>
+          </strong>
+          <strong *ngIf="!showShareButtonAndLinks">
+            {{post.creator.username}}
+            <span *ngIf="post.group"> @ {{ post.group.name }}</span>
+          </strong>
           <br>
           <small>{{post.created_at | date:'medium'}}</small>
         </p>
         <div class="post_content_wrapper">
           {{post.content ? post.content : 'No content'}}
         </div>
-        <app-post *ngIf="post.child_post != null" [showShareButton]="showShareButton" [post]="post.child_post"></app-post>
+        <app-post *ngIf="post.child_post != null" [showShareButtonAndLinks]="showShareButtonAndLinks" [post]="post.child_post"></app-post>
       </div>
 
-      <nav *ngIf="showShareButton" class="level is-mobile">
+      <nav *ngIf="showShareButtonAndLinks" class="level is-mobile">
         <div class="level-left">
           <a class="level-item" aria-label="like" (click)="onShareClick()">
             <span class="icon is-small">
@@ -79,16 +86,13 @@
                       <div class="post_content_wrapper">
                         {{post.content ? post.content : 'No content'}}
                       </div>
-                      <app-post [showShareButton]="false" *ngIf="post.child_post != null" [post]="post.child_post"></app-post>
+                      <app-post [showShareButtonAndLinks]="false" *ngIf="post.child_post != null" [post]="post.child_post"></app-post>
                     </div>
                   </div>
                 </article>
               </div>
               <!-- shared post END-->
-
-
-
-
+              
             </div>
           </div>
         </article>

@@ -15,7 +15,7 @@ import { PostService } from '../../services/post.service';
 })
 export class PostComponent implements OnInit {
   @Input() post: PostDto;
-  @Input() showShareButton = true;
+  @Input() showShareButtonAndLinks = true;
 
   selectedGroupID: number;
   selectedGroup: GroupDto;
