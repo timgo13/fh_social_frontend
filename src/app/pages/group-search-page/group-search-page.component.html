@@ -3,7 +3,10 @@
 <section class="section">
   <div class="container is-center">
 
-    <h1 class="title ">{{ 'group.search.title' | translate }}</h1>
+    <h1 class="title ">{{ 'group.search.title' | translate }}
+      <button class="button is-primary is-light" (click)="createGroupModalActive = true">{{ 'group.create.title' | translate }}</button>
+    </h1>
+
 
     <div class="control searchbar">
       <input [(ngModel)]="query" (ngModelChange)="onSearchType()" class="input" type="text" placeholder="{{ 'group.search.searchplaceholder' | translate }}">
@@ -24,3 +27,42 @@
 
   </div>
 </section>
+
+
+
+
+
+
+
+<!-- create group modal START-->
+<div class="modal" [ngClass]="{'is-active': createGroupModalActive}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ 'group.create.title' | translate }}</p>
+      <button class="delete" aria-label="close" (click)="onCloseModalClick()"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <label for="groupNameInput" *ngIf="!groupCreated">{{ 'group.create.groupname' | translate }}</label>
+
+      <div *ngIf="!groupCreated" class="control" [ngClass]="{'is-loading': loadingNewGroup}">
+        <input id="groupNameInput" class="input" type="text" [disabled]="loadingNewGroup" [(ngModel)]="createGroupDto.name">
+      </div>
+
+      <app-group [group]="newGroup" *ngIf="groupCreated"></app-group>
+
+      <p *ngIf="groupCreated" class="has-text-primary has-text-centered has-text-weight-bold">{{ 'group.create.done' | translate }}</p>
+      <p *ngIf="groupExists" class="has-text-danger has-text-centered has-text-weight-bold">{{ 'group.create.exists' | translate }}</p>
+      <p *ngIf="groupNameToShort" class="has-text-danger has-text-centered has-text-weight-bold">{{ 'group.create.to_short' | translate }}</p>
+
+      <div id="bottommargin"></div>
+
+    </section>
+    <footer class="modal-card-foot" *ngIf="!groupCreated">
+      <button class="button" (click)="onCloseModalClick()">{{ 'group.create.cancel' | translate }}</button>
+      <button [ngClass]="{ 'disabled': loading }" class="button is-success" (click)="onSubmitCreateGroupClick()">{{ 'group.create.submit' | translate }}</button>
+    </footer>
+  </div>
+</div>
+<!-- create group modal END-->

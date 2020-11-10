@@ -15,6 +15,15 @@
     "subscribed": "Abonniert",
     "subscribe": "Gruppe beitreten",
     "unsubscribe": "Gruppe verlassen",
+    "create": {
+      "title": "Neue Gruppe erstellen",
+      "groupname": "Name",
+      "submit": "Gruppe erstellen",
+      "done": "Gruppe erstellt",
+      "cancel": "Abbrechen",
+      "exists": "Gruppe existiert bereits!",
+      "to_short": "Name zu kurz!"
+    },
     "search": {
       "title": "Gruppe suchen",
       "searchplaceholder": "Name eingeben...",

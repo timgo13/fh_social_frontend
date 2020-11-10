@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { GroupDto } from './dto/group.dto';
 import { PostDto } from './dto/post.dto';
 import { UserDto } from './dto/user.dto';
+import { CreateGroupDto } from './dto/create-group.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,14 @@ export class GroupService {
 
   searchGroup$(query: string): Observable<GroupDto[]> {
     return this.http.get<GroupDto[]>(this.apiService.apiBaseUrl + '/group/search?query= ' + query,
+      AuthService.buildAuthHeader()
+    );
+  }
+
+  createGroup$(createGroupDto: CreateGroupDto): Observable<GroupDto> {
+    return this.http.post<GroupDto>(
+      this.apiService.apiBaseUrl + '/group/',
+      createGroupDto,
       AuthService.buildAuthHeader()
     );
   }
