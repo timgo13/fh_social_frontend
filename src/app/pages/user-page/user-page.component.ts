@@ -20,7 +20,7 @@ export class UserPageComponent implements OnInit {
   viewState: ViewState = ViewState.POSTS;
 
   posts: PostDto[] = [];
-  private pagesize = 35;
+  private pagesize = 30;
   private currentOffset = 0;
   private loadingPosts = false;
   private lastPageSize = this.pagesize;
@@ -87,8 +87,8 @@ export class UserPageComponent implements OnInit {
   onListScroll(): void {
     const nativeElement = this.scrollContainer.nativeElement;
 
-    // start loading 1000px before the bottom
-    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 1000) {
+    // start loading 1250px before the bottom
+    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 1250) {
       this.loadPostsPage();
     }
   }
