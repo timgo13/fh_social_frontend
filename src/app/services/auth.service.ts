@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   // TODO change to be set in build and deployment
-  private clientSecret = 'CZZNVs6KyIv1quLBp4hFQ8voUNXNQ1Ndwb7zx4Md';
+  private clientSecret = 'Msb8HdPPg8MRHnvCfN6dfFdGPDxyB3g3M3xU69j2';
   private clientID = '2';
 
   authUrl = '/oauth/token';
