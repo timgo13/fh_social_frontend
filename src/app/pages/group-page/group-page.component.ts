@@ -83,8 +83,8 @@ export class GroupPageComponent implements OnInit {
   onListScroll(): void {
     const nativeElement = this.scrollContainer.nativeElement;
 
-    // start loading 1250px before the bottom
-    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 1250) {
+    // start loading 2000px before the bottom
+    if (nativeElement.scrollHeight - nativeElement.scrollTop <= nativeElement.clientHeight + 2000) {
       this.loadPostsPage();
     }
   }
