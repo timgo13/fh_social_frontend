@@ -11,20 +11,25 @@ export class LoginPageComponent {
 
   username = '';
   password = '';
+  loading = false;
+  error = false;
 
   constructor(private authService: AuthService,
               private router: Router) { }
 
   login(): void {
+    this.loading = true;
     this.authService.login$(this.username, this.password).subscribe(loginToken => {
+      this.loading = false;
+      this.error = false;
       const access_token = loginToken.access_token;
       localStorage.setItem('access_token', access_token);
       this.router.navigate(['']);
     }, error => {
+      this.loading = false;
+      this.error = true;
       console.log(error);
       this.password = '';
-      alert('wrong user:pass');
-      // Todo handle error
     });
   }
 

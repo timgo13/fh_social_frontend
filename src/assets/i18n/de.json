@@ -3,7 +3,8 @@
     "title": "FH Aachen Soziales Netzwerk",
     "username": "Benutzername",
     "password": "Passwort",
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "error": "Benutzername / Passwort inkorrekt"
   },
   "navbar": {
     "logout": "Abmelden"
