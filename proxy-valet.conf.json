@@ -1,0 +1,12 @@
+{
+  "/api": {
+    "target": "http://fh-aachen-social-network-backend.test:80",
+    "changeOrigin": true,
+    "secure": false
+  },
+  "/oauth": {
+    "target": "http://fh-aachen-social-network-backend.test:80",
+    "changeOrigin": true,
+    "secure": false
+  }
+}
