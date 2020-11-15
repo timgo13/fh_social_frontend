@@ -22,24 +22,44 @@
 
 
       <div *ngIf="viewState == ViewState.POSTS" class="scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+
+        <div class="subtitle has-text-warning has-text-centered warning-message" *ngIf="posts.length === 0">
+          {{ 'user.no-posts' | translate }}
+        </div>
+
         <div *ngFor="let post of posts">
           <app-post [post]="post"></app-post>
         </div>
       </div>
 
       <div *ngIf="viewState == ViewState.SUBSCRIBERS" class="scrollContainer">
+
+        <div class="subtitle has-text-warning has-text-centered warning-message" *ngIf="userSubscribers.length === 0">
+          {{ 'user.no-subscribers' | translate }}
+        </div>
+
         <div *ngFor="let user of userSubscribers">
           <app-user [user]="user"></app-user>
         </div>
       </div>
 
       <div *ngIf="viewState == ViewState.USERSUBSCRIPTIONS" class="scrollContainer">
+
+        <div class="subtitle has-text-warning has-text-centered warning-message" *ngIf="userSubscriptions.length === 0">
+          {{ 'user.no-user-subscriptions' | translate }}
+        </div>
+
         <div *ngFor="let user of userSubscriptions">
           <app-user [user]="user"></app-user>
         </div>
       </div>
 
       <div *ngIf="viewState == ViewState.GROUPSUBSCRIPTIONS" class="scrollContainer">
+
+        <div class="subtitle has-text-warning has-text-centered warning-message" *ngIf="groupSubscriptions.length === 0">
+          {{ 'user.no-group-subscriptions' | translate }}
+        </div>
+
         <div *ngFor="let group of groupSubscriptions">
           <app-group [group]="group"></app-group>
         </div>

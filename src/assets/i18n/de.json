@@ -11,6 +11,8 @@
   },
   "group" : {
     "404": "Gruppe nicht gefunen ¯\\_(ツ)_/¯",
+    "no-posts": "Keine Posts ¯\\_(ツ)_/¯",
+    "no-subscribers": "Keine Abonnenten ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed",
     "title": "Gruppen",
     "subscribed": "Abonniert",
@@ -42,6 +44,10 @@
   },
   "user" : {
     "404": "Benutzer nicht gefunen ¯\\_(ツ)_/¯",
+    "no-posts": "Keine Posts ¯\\_(ツ)_/¯",
+    "no-subscribers": "Keine Abonnenten ¯\\_(ツ)_/¯",
+    "no-user-subscriptions": "Keine Benutzer Abos ¯\\_(ツ)_/¯",
+    "no-group-subscriptions": "Keine Gruppen Abos ¯\\_(ツ)_/¯",
     "back_home": "Zurück zum Feed",
     "title": "Benutzer",
     "subscriber": "Abonnenten",
@@ -58,7 +64,8 @@
     }
   },
   "feed": {
-    "title": "Feed"
+    "title": "Feed",
+    "no-posts": "Keine Posts ¯\\_(ツ)_/¯"
   },
   "post": {
     "title": "Posts",

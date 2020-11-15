@@ -8,6 +8,11 @@
     <app-create-private-post></app-create-private-post>
 
     <div class="scrollContainer" id="scrollContainer" #scrollContainer (scroll)="onListScroll()">
+
+      <div class="subtitle has-text-warning has-text-centered warning-message" *ngIf="posts.length === 0">
+        {{ 'feed.no-posts' | translate }}
+      </div>
+
       <div *ngFor="let post of posts">
         <app-post [post]="post"></app-post>
       </div>

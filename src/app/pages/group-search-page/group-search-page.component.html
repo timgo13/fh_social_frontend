@@ -16,7 +16,7 @@
 
       <progress *ngIf="loading" class="progress is-small is-primary" max="100">15%</progress>
 
-      <div class="subtitle has-text-danger-dark has-text-centered warning error-message" *ngIf="groups.length === 0 && !loading && !noSearchYet">
+      <div class="subtitle has-text-danger-dark has-text-centered error-message" *ngIf="groups.length === 0 && !loading && !noSearchYet">
         {{ 'group.search.error' | translate }}
       </div>
 
