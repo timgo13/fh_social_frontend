@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "fh-aachen-social-network-frontend"
+    }
+  },
+  "defaultProject": "fh-aachen-social-network-frontend",
+  "cli": {
+    "analytics": "b009936f-b8d7-44f5-bdf9-4115ede31471"
+  }
 }

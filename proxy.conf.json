@@ -1,10 +1,14 @@
 {
-  "/api": {
+  "/api/v1": {
     "target": "http://localhost:8000",
     "secure": false
   },
   "/oauth": {
     "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/api/recommendations": {
+    "target": "http://localhost:5000",
     "secure": false
   }
 }

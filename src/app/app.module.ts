@@ -24,6 +24,7 @@ import { GroupModule } from './shared-components/group/group.module';
 import { AuthInterceptor } from './services/AuthInterceptor';
 import { CreatePrivatePostComponent } from './pages/feed-page/components/create-post/create-private-post.component';
 import { CreateGroupPostComponent } from './pages/group-page/components/create-group-post/create-group-post.component';
+import { UserGroupRecommendationComponent } from './shared-components/user-group-recommendation/user-group-recommendation.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     UserSearchPageComponent,
     CreatePrivatePostComponent,
     CreateGroupPostComponent,
+    UserGroupRecommendationComponent,
   ],
   imports: [
     CommonModule,

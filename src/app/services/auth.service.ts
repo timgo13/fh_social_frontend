@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   // TODO change to be set in build and deployment
-  private clientSecret = 'ctjU5oJeXIPuAALIPN2SrNcfzhxhEXQ6Wgx5G6JG';
+  private clientSecret = 'Pm9KwQEJKEkx9QfRTrG96ftLf1jPl2wcJC7wZkd5';
   private clientID = '2';
 
   authUrl = '/oauth/token';
@@ -54,7 +54,7 @@ export class AuthService {
 
   login$(username: string, password: string): Observable<LoginTokenDto> {
     return this.http.post<LoginTokenDto>(this.authUrl, {
-      grant_type: 'password',
+      grant_type: 'password', // 'client_credentials',
       client_id: this.clientID,
       client_secret: this.clientSecret,
       username,

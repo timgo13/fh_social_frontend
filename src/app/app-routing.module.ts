@@ -10,6 +10,7 @@ import { WhenNotAuthenticatedGuard } from './services/guards/when-not-authentica
 import { PostPageComponent } from './pages/post-page/post-page.component';
 import { UserSearchPageComponent } from './pages/user-search-page/user-search-page.component';
 import { GroupSearchPageComponent } from './pages/group-search-page/group-search-page.component';
+import { UserGroupRecommendationComponent} from './shared-components/user-group-recommendation/user-group-recommendation.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'user/:id',
-    canActivate: [WhenAuthenticatedGuard],
+    // canActivate: [WhenAuthenticatedGuard],
     component: UserPageComponent
   },
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
     path: 'post',
     canActivate: [WhenAuthenticatedGuard],
     component: CreatePostPageComponent
+  },
+  {
+    path: 'group_recommendations/:id',
+    // canActivate: [WhenAuthenticatedGuard],
+    component: UserGroupRecommendationComponent
   },
 
   // Fallback when no prior routes is matched
