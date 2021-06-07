@@ -8,27 +8,10 @@
       </div>
 
       <div *ngIf="!loading">
-        <div *ngFor="let name of recommendations?.group_recommendations; let i=index">
-
-          <div class="row mt-1">
-            <a class="box group" [routerLink]="['/','group', recommendations.group_id_recommendations[i]]">
-              <article class="media">
-                <div class="media-content">
-                  <div class="content">
-                    <p>
-                      <strong>{{name}}</strong>
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </a>
-          </div>
-
-
+        <div *ngFor="let g of groups">
+          <app-group [group]="g"></app-group>
         </div>
       </div>
-
-
 
     </div>
   </span>

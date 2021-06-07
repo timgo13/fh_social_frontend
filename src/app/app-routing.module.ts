@@ -50,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'post',
-    canActivate: [WhenAuthenticatedGuard],
+    // canActivate: [WhenAuthenticatedGuard],
     component: CreatePostPageComponent
   },
   {

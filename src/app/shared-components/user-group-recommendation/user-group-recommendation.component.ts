@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GroupRecommendationsDto } from '../../services/dto/group-recommendations.dto';
 import { RecommendationService} from '../../services/recommendation.service';
 import { GroupDto } from '../../services/dto/group.dto';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-group-recommendation',
@@ -33,9 +32,9 @@ export class UserGroupRecommendationComponent implements OnInit {
                            console.log(this.recommendations);
 
                            for (let i = 0; i < this.recommendations.group_recommendations.length; i++) {
-                              this.group.id = this.recommendations.group_id_recommendations[i];
-                              this.group.name = this.recommendations.group_recommendations[i];
-                              this.groups.push(this.group);
+                             this.groups.push(
+                               { id: this.recommendations.group_id_recommendations[i], creator_id: 0,
+                               name: this.recommendations.group_recommendations[i], created_at: null, updated_at: null});
         }
                            this.loading = false;
         }, error => {

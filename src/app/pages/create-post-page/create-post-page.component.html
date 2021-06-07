@@ -1,1 +1,42 @@
-<p>create-post-page works!</p>
+
+
+<section class="section">
+  <div class="container is-center">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title">Post erstellen:</h1>
+
+        <form class="form-horizontal">
+          <fieldset>
+            <div class="field">
+              <label class="label" for="input_group">Gruppe</label>
+              <div class="control">
+                <input [(ngModel)]="inputGroup" [ngModelOptions]="{standalone: true}" id="input_group" type="text" class="input">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="input_post">Post</label>
+              <div class="control">
+                <textarea [(ngModel)]="inputPost" [ngModelOptions]="{standalone: true}" id="input_post" type="text" class="textarea" ></textarea>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button id="button_post" type="button" class="button is-primary" (click)="groupRecommendations()" [disabled]="loadingRecommendations">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+        <div *ngIf="!loadingRecommendations && this?.recommendations ">
+          <div *ngFor="let g of groups">
+            <app-group [group]="g"></app-group>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
