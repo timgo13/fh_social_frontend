@@ -17,6 +17,7 @@ export class CreatePostPageComponent implements OnInit {
   loadingRecommendations = false;
   recommendations: GroupRecommendationsDtov2;
   groups: GroupDto[] = [];
+  groupSelected = false;
 
   constructor(private  router: Router,
               private recommendationService: RecommendationService) { }
@@ -31,11 +32,10 @@ export class CreatePostPageComponent implements OnInit {
   groupRecommendations(): void {
     this.groups = [];
     this.loadingRecommendations = true;
+    this.groupSelected = false;
     this.recommendationService.getPostGroupRecommendations$(this.inputPost, this.inputGroup).subscribe(
       recommendations => {
-        // console.log(recommendations);
         this.recommendations = recommendations;
-        // console.log(this.recommendations);
         for (let i = 0; i < this.recommendations[0].length; i++){
           this.groups.push(
             { id: this.recommendations[0][i], creator_id: 0, name: this.recommendations[1][i], created_at: null, updated_at: null} );
@@ -44,6 +44,11 @@ export class CreatePostPageComponent implements OnInit {
       }, error => {
       console.log(error);
       });
+  }
+
+  groupChange(value): void {
+    this.inputGroup = value;
+    this.groupSelected = true;
   }
 
 }

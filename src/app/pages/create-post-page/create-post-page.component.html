@@ -11,30 +11,32 @@
             <div class="field">
               <label class="label" for="input_group">Gruppe</label>
               <div class="control">
-                <input [(ngModel)]="inputGroup" [ngModelOptions]="{standalone: true}" id="input_group" type="text" class="input">
+                <input [(ngModel)]="inputGroup" [ngModelOptions]="{standalone: true}" id="input_group"
+                       type="text" class="input" (change)="groupRecommendations()">
               </div>
+            </div>
+
+            <div class="field" *ngIf="!loadingRecommendations && this?.recommendations && !groupSelected">
+              <select class="select" id="group_options" #group (change)="groupChange($any($event.target).value)">
+                <option selected disabled>Gruppen Optionen</option>
+                <option [ngValue]="g.name" *ngFor="let g of groups">{{g.name}}</option>
+              </select>
             </div>
 
             <div class="field">
               <label class="label" for="input_post">Post</label>
               <div class="control">
-                <textarea [(ngModel)]="inputPost" [ngModelOptions]="{standalone: true}" id="input_post" type="text" class="textarea" ></textarea>
+                <textarea [(ngModel)]="inputPost" [ngModelOptions]="{standalone: true}" id="input_post" type="text" class="textarea" (change)="groupRecommendations()"></textarea>
               </div>
             </div>
 
             <div class="field">
               <div class="control">
-                <button id="button_post" type="button" class="button is-primary" (click)="groupRecommendations()" [disabled]="loadingRecommendations">Submit</button>
+                <button id="button_post" type="button" class="button is-primary" (click)="createPost()" [disabled]="loadingRecommendations">Submit</button>
               </div>
             </div>
           </fieldset>
         </form>
-
-        <div *ngIf="!loadingRecommendations && this?.recommendations ">
-          <div *ngFor="let g of groups">
-            <app-group [group]="g"></app-group>
-          </div>
-        </div>
 
       </div>
     </div>
