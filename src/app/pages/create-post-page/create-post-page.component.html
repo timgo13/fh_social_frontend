@@ -12,7 +12,7 @@
               <label class="label" for="input_group">Gruppe</label>
               <div class="control">
                 <input [(ngModel)]="inputGroup" [ngModelOptions]="{standalone: true}" id="input_group"
-                       type="text" class="input" (change)="groupRecommendations()">
+                       type="text" class="input" (keyup)="onKeyUp($any($event.target).value)" (change)="groupRecommendations()">
               </div>
             </div>
 
@@ -26,7 +26,8 @@
             <div class="field">
               <label class="label" for="input_post">Post</label>
               <div class="control">
-                <textarea [(ngModel)]="inputPost" [ngModelOptions]="{standalone: true}" id="input_post" type="text" class="textarea" (change)="groupRecommendations()"></textarea>
+                <textarea [(ngModel)]="inputPost" [ngModelOptions]="{standalone: true}" id="input_post" type="text"
+                          class="textarea" (keyup)="onKeyUp($any($event.target).value)"></textarea>
               </div>
             </div>
 

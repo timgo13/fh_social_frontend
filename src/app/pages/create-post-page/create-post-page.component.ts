@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { RecommendationService} from '../../services/recommendation.service';
 import { GroupDto } from '../../services/dto/group.dto';
 import { GroupRecommendationsDtov2} from '../../services/dto/group-rocommendations-v2.dto';
+import { debounceTime, distinctUntilChanged, mergeMap } from 'rxjs/operators';
+import {Subject, Subscription} from 'rxjs';
+import { Observable} from 'rxjs';
 
 @Component({
   selector: 'app-create-post-page',
@@ -19,10 +22,19 @@ export class CreatePostPageComponent implements OnInit {
   groups: GroupDto[] = [];
   groupSelected = false;
 
+  subscription: Subscription;
+  keyUpText = new Subject<string>();
+
   constructor(private  router: Router,
               private recommendationService: RecommendationService) { }
 
   ngOnInit(): void {
+    this.subscription = this.keyUpText.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+      ).subscribe(() => {
+        this.groupRecommendations();
+    });
   }
 
   createPost(): void {
@@ -49,6 +61,10 @@ export class CreatePostPageComponent implements OnInit {
   groupChange(value): void {
     this.inputGroup = value;
     this.groupSelected = true;
+  }
+
+  onKeyUp(value): void {
+    this.keyUpText.next(value);
   }
 
 }
